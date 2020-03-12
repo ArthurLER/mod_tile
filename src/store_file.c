@@ -192,6 +192,7 @@ static int file_metatile_write(struct storage_backend * store, const char *xmlco
     fprintf(renderd_tiles , "%s\n", meta_path);
     fclose(renderd_tiles );
 	
+	
 
     tmp = malloc(sizeof(char) * strlen(meta_path) + 24);
     snprintf(tmp, strlen(meta_path) + 24, "%s.%lu", meta_path, pthread_self());
