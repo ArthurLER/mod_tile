@@ -181,8 +181,16 @@ static int file_metatile_write(struct storage_backend * store, const char *xmlco
     char * tmp;
     int res;
  
+
+	
     xyzo_to_meta(meta_path, sizeof(meta_path), (char *)(store->storage_ctx), xmlconfig, options, x, y, z);
     log_message(STORE_LOGLVL_DEBUG, "Creating and writing a metatile to %s\n", meta_path);
+
+
+    //Saves paths to metatiles in a file
+    FILE *renderd_tiles = fopen("/home/renderer/renderd_tiles.txt","a+"); 
+    fprintf(renderd_tiles , "%s\n", meta_path);
+    fclose(renderd_tiles );
 
     tmp = malloc(sizeof(char) * strlen(meta_path) + 24);
     snprintf(tmp, strlen(meta_path) + 24, "%s.%lu", meta_path, pthread_self());
